@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Happy Girlfriend Day ❤️</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(135deg,#ff758c,#ff7eb3,#ffc3a0);color:#fff;overflow-x:hidden}
+.wrap{max-width:520px;margin:20px auto;padding:18px}
+.card{background:rgba(255,255,255,.15);backdrop-filter:blur(10px);border-radius:20px;padding:22px;text-align:center}
+button{padding:14px 22px;border:none;border-radius:999px;margin:8px;font-size:17px}
+.area{position:relative;height:110px}
+#no1,#no2{position:absolute;left:180px}
+.out{min-height:28px;margin-top:10px}
+.heart{position:fixed;bottom:-30px;animation:f 6s linear forwards}
+@keyframes f{to{transform:translateY(-110vh);opacity:0}}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="card">
+<h1>Happy Girlfriend Day ❤️</h1>
+<p>I'm sorry I forgot Girlfriend's Day. You mean the world to me, and I made this little page just for you. 💖</p>
+<button onclick="msg()">💌 Surprise</button><div id="m" class="out"></div>
+<button onclick="reason()">❤️ Why I Love You</button><div id="r" class="out"></div>
+<hr>
+<h2>💍 Will You Marry Me?</h2>
+<div class="area">
+<button onclick="document.getElementById('p').innerHTML='💍 You made me the happiest person alive! ❤️'">YES 💖</button>
+<button id="no1">NO 😝</button>
+</div><div id="p" class="out"></div>
+<hr>
+<h2>🥺 Will You Forgive Me?</h2>
+<div class="area">
+<button onclick="document.getElementById('s').innerHTML='Thank you ❤️ I promise to do better and keep making you smile.'">YES ❤️</button>
+<button id="no2">NO 😤</button>
+</div><div id="s" class="out"></div>
+</div></div>
+<script>
+const reasons=["Your smile lights up my day 😊","You make me a better person ❤️","I love your kindness 🌸","You're my safe place 💕","Every moment with you is special ✨"];
+function msg(){m.innerHTML="💕 Happy Girlfriend Day! I love you more than words can say."}
+function reason(){r.innerHTML=reasons[Math.floor(Math.random()*reasons.length)]}
+function jump(btn){
+ if(navigator.vibrate) navigator.vibrate(80);
+ const a=btn.parentElement;
+ btn.style.left=Math.random()*(a.clientWidth-btn.offsetWidth)+"px";
+ btn.style.top=Math.random()*(a.clientHeight-btn.offsetHeight)+"px";
+}
+["no1","no2"].forEach(id=>{
+ const b=document.getElementById(id);
+ ["touchstart","pointerdown","mouseenter","click"].forEach(ev=>{
+   b.addEventListener(ev,function(e){e.preventDefault();jump(b); if(id==="no2") s.innerHTML="😄 Nice try!";},{passive:false});
+ });
+});
+setInterval(()=>{
+ let h=document.createElement("div");
+ h.className="heart";h.textContent="❤️";
+ h.style.left=Math.random()*100+"vw";
+ h.style.fontSize=(18+Math.random()*18)+"px";
+ document.body.appendChild(h);
+ setTimeout(()=>h.remove(),6000);
+},350);
+</script>
+</body></html>
